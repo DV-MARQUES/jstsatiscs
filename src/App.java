@@ -6,30 +6,13 @@ public class App {
 
         // Menu com switch
         
-        int op = Integer.parseInt(JOptionPane.showInputDialog(
-            "Digite a opção:\n1 - Estatística Descritiva\n2 - Probabilidade\n3 - Modelos Probabilísticos"
-        ));
+        String cont = "N"; // valor inicial
+        int op;
 
-        switch (op) {
-            case 1:
-                JOptionPane.showMessageDialog(null, "Estatística Descritiva");
-                break;
-            case 2:
-                JOptionPane.showMessageDialog(null, "Probabilidade");
-                break;
-            case 3:
-                JOptionPane.showMessageDialog(null, "Modelos Probabilísticos");
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Opção Inválida");
-                break;
-        }
+        do {
+            op = Integer.parseInt(JOptionPane.showInputDialog(
+                "Digite a Opção: \n1 - Estatística Descritiva\n2 - Probabilidade\n3 - Modelos Probabilísticos\n4 - Sair"));
 
-        String escolha;
-        do{
-            System.out.println( "Deseja escolher outra opção");
-            escolha = JOptionPane.showInputDialog("Digite s-sim ou n-não");
-        }while(escolha != "n"); {
             switch (op) {
                 case 1:
                     JOptionPane.showMessageDialog(null, "Estatística Descritiva");
@@ -40,13 +23,20 @@ public class App {
                 case 3:
                     JOptionPane.showMessageDialog(null, "Modelos Probabilísticos");
                     break;
+                case 4:
+                    cont = JOptionPane.showInputDialog("Tem certeza disso? (S - Sim / N - Não)");
+                    if (cont.equalsIgnoreCase("S")) {
+                        JOptionPane.showMessageDialog(null, "Encerrando Sistema...");
+                    } else {
+                        op = 0; // força repetição
+                    }
+                    break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opção Inválida");
                     break;
-        }
+            }
 
-        JOptionPane.showMessageDialog(null, "Encerrado Sistema");
-        
+        } while (op != 4 || (cont != null && !cont.equalsIgnoreCase("S")));      
 
         // Loop while
         /* 
@@ -61,13 +51,15 @@ public class App {
             System.out.println(cont);
         }
         */
-
+        /*  
         String sair;
         do{
             System.out.println( "sair: s ou n");
             sair = JOptionPane.showInputDialog("Digite s-sim ou n-não");
         }while(sair != "n");
     }
-}
+    */
+  
+  }
 }
 
