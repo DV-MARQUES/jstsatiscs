@@ -13,7 +13,6 @@ public class App {
         //Objeto Random
         //Sorteio
         Random random = new Random();
-
         //Contadores para verificar adistribuição
         int contCara = 0;
         int contCoroa = 0;
