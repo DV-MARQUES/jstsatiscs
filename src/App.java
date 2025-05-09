@@ -33,9 +33,14 @@ public class App {
                     int largura = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a largura do Jardim:"));
                     int comprimento = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o comprimento do Jardim:"));
                     int area = largura * comprimento;
-                    JOptionPane.showMessageDialog(null, "O Resultado foi: " + area+"metros");
-                    break;
-
+                    if(area >= 100){
+                        JOptionPane.showMessageDialog(null, "O Resultado foi: " + area+"metros quadrados"+"\n"+"Que jardim Grande");
+                        break;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "O Resultado foi: " + area+"metros"+"\n"+"Que jardim Pequeno");
+                        break;
+                    }
+                    
                 case 3:
                     JOptionPane.showMessageDialog(null, "Até mais, Jardineiro!");
                     break;
