@@ -2,30 +2,49 @@ import javax.swing.JOptionPane;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-public class App {
-    public static void main(String[] args)throws Exception {
-    
-    // A mensagem a ser exibida   
-    String mensagem= "Olá Meu Querido Jardineiro"+"\n"+
-                     "Deseja se Cadastrar";
-    
-    // A janela a ser exibida
-    while(true){
-    int opcao = JOptionPane.showConfirmDialog(null, mensagem, "Floralchic" , JOptionPane.YES_NO_OPTION);
-  
-     if(opcao != JOptionPane.YES_OPTION){
-        JOptionPane.showMessageDialog(null, "Até mais Jardineiro");
-        break;
-     }else{
-        String nome = JOptionPane.showInputDialog(null,"Digite seu Nome pequeno Jardineiro: ");
-        String endereco = JOptionPane.showInputDialog(null, "Digite seu Endenreço: ");
 
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("dadod",true))){
-            writer.write("Nome: "+nome+ "Endereço: "+endereco);
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Error ao gravar Dados"+ e.getMessage());
-        }
-     }
-    } 
-   } 
+public class App {
+    public static void main(String[] args) {
+        int op;
+
+        do {
+            String mensagem = "Olá Meu Querido Jardineiro\n" +
+                              "Escolha uma opção:\n" +
+                              "1 - Cadastrar-se\n" +
+                              "2 - Calcular Área\n" +
+                              "3 - Sair";
+
+            op = Integer.parseInt(JOptionPane.showInputDialog(mensagem));
+
+            switch (op) {
+                case 1:
+                    String nome = JOptionPane.showInputDialog(null, "Digite seu Nome, Pequeno Jardineiro:");
+                    String endereco = JOptionPane.showInputDialog(null, "Digite seu Endereço:");
+
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("dados.txt", true))) {
+                        writer.write("Nome: " + nome + "\n" + "Endereço: " + endereco + "\n");
+                        writer.write("---------------\n");
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Erro ao gravar dados: " + e.getMessage());
+                    }
+                    break;
+
+                case 2:
+                    int largura = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a largura do Jardim:"));
+                    int comprimento = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o comprimento do Jardim:"));
+                    int area = largura * comprimento;
+                    JOptionPane.showMessageDialog(null, "O Resultado foi: " + area+"metros");
+                    break;
+
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Até mais, Jardineiro!");
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Opção inválida");
+                    break;
+            }
+
+        } while (op != 3); // repete até o usuário escolher sair
+    }
 }
