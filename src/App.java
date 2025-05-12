@@ -44,30 +44,57 @@ public class App {
                     
                 case 3:  
                     String mesangemServico = "Escolha um Tipo de Serviço: \n" +
-                                             "1 - Manutenção\n" + 
-                                             "2 - Poda\n" + 
-                                             "3 - Controle de Doenças e Pragas";
+                                             "1 - Manutenção" + "Preço: R$250" + "\n" + 
+                                             "2 - Poda" + "Preço: R$50" + "\n" + 
+                                             "3 - Controle de Doenças e Pragas" + "Preço: R$300" + "\n" +
+                                             "4 - Limpeza" + "Preço: R$80" + "\n" +
+                                             "5 - Adubar" + "Preço: R$5";
                     int se = Integer.parseInt(JOptionPane.showInputDialog(mesangemServico));
+                    int qtdDesconto = 0;
+                    int preco = 0;
                     
                      switch (se) {
                         case 1:
                             JOptionPane.showMessageDialog(null, "Vamos prestar a Manutenção");
+                            qtdDesconto = qtdDesconto + 1;
+                            preco = preco + 250;
                             break;
                      
                         case 2:
                             JOptionPane.showMessageDialog(null, "Vamos fazer a poda");
+                            qtdDesconto = qtdDesconto + 1;
+                            preco = preco + 50;
                             break;
                         
                         case 3:
                             JOptionPane.showMessageDialog(null, "Vamos fazer Controle de Doenças e Pragas");
+                            qtdDesconto = qtdDesconto + 1;
+                            preco = preco + 300;
                             break;        
+                        
+                        case 4:
+                            JOptionPane.showMessageDialog(null, "Vamos fazer a Limpeza");
+                            qtdDesconto = qtdDesconto + 1;
+                            preco = preco + 80;
+                            break; 
+
+                        case 5:
+                            JOptionPane.showMessageDialog(null, "Vamos aduber sua terra");
+                            qtdDesconto = qtdDesconto + 1;
+                            preco = preco + 5;
+                            break; 
+
                         default:
                             JOptionPane.showMessageDialog(null, "Serviço não encontrado");
                             break;
                      }
                     break;
                 case 4:
-                    JOptionPane.showMessageDialog(null, "Até mais, Jardineiro!");
+                    
+                    JOptionPane.showConfirmDialog(null, "Estatiticas:" + "\n" + 
+                                                 "Preço dos Serviços: " +preco+ "\n" + 
+                                                 "Desconto: " +qtdDesconto+ "\n" +
+                                                 "Preço Total: " + );
                     break;
 
                 default:
