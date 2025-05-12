@@ -6,6 +6,12 @@ import java.io.IOException;
 public class App {
     public static void main(String[] args) {
         int op;
+        int qtdDesconto = 0; // agora visível para todos os cases
+        int preco = 0;
+        int qtdArea = 0;
+        int somaArea = 0;
+        int jarGrande = 0;
+        int jarPequeno = 0;
 
         do {
             String mensagem = "Olá Meu Querido Jardineiro\n" +
@@ -34,67 +40,77 @@ public class App {
                     int largura = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a largura do Jardim:"));
                     int comprimento = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o comprimento do Jardim:"));
                     int area = largura * comprimento;
-                    if(area >= 100){
-                        JOptionPane.showMessageDialog(null, "O Resultado foi: " + area+"metros quadrados"+"\n"+"Que jardim Grande");
-                        break;
-                    }else{
-                        JOptionPane.showMessageDialog(null, "O Resultado foi: " + area+"metros"+"\n"+"Que jardim Pequeno");
-                        break;
+                    if (area >= 100) {
+                        JOptionPane.showMessageDialog(null, "O Resultado foi: " + area + " metros quadrados\nQue jardim Grande");
+                        qtdArea++;
+                        somaArea += area;
+                        jarGrande++;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "O Resultado foi: " + area + " metros quadrados\nQue jardim Pequeno");
+                        qtdArea++;
+                        somaArea += area;
+                        jarPequeno++;
                     }
-                    
-                case 3:  
-                    String mesangemServico = "Escolha um Tipo de Serviço: \n" +
-                                             "1 - Manutenção" + "Preço: R$250" + "\n" + 
-                                             "2 - Poda" + "Preço: R$50" + "\n" + 
-                                             "3 - Controle de Doenças e Pragas" + "Preço: R$300" + "\n" +
-                                             "4 - Limpeza" + "Preço: R$80" + "\n" +
-                                             "5 - Adubar" + "Preço: R$5";
-                    int se = Integer.parseInt(JOptionPane.showInputDialog(mesangemServico));
-                    int qtdDesconto = 0;
-                    int preco = 0;
-                    
-                     switch (se) {
+                    break;
+
+                case 3:
+                    String mensagemServico = "Escolha um Tipo de Serviço: \n" +
+                                             "1 - Manutenção (R$250)\n" +
+                                             "2 - Poda (R$50)\n" +
+                                             "3 - Controle de Doenças e Pragas (R$300)\n" +
+                                             "4 - Limpeza (R$80)\n" +
+                                             "5 - Adubar (R$5)";
+                    int se = Integer.parseInt(JOptionPane.showInputDialog(mensagemServico));
+
+                    switch (se) {
                         case 1:
                             JOptionPane.showMessageDialog(null, "Vamos prestar a Manutenção");
-                            qtdDesconto = qtdDesconto + 1;
-                            preco = preco + 250;
+                            qtdDesconto++;
+                            preco += 250;
                             break;
-                     
+
                         case 2:
                             JOptionPane.showMessageDialog(null, "Vamos fazer a poda");
-                            qtdDesconto = qtdDesconto + 1;
-                            preco = preco + 50;
+                            qtdDesconto++;
+                            preco += 50;
                             break;
-                        
+
                         case 3:
                             JOptionPane.showMessageDialog(null, "Vamos fazer Controle de Doenças e Pragas");
-                            qtdDesconto = qtdDesconto + 1;
-                            preco = preco + 300;
-                            break;        
-                        
+                            qtdDesconto++;
+                            preco += 300;
+                            break;
+
                         case 4:
                             JOptionPane.showMessageDialog(null, "Vamos fazer a Limpeza");
-                            qtdDesconto = qtdDesconto + 1;
-                            preco = preco + 80;
-                            break; 
+                            qtdDesconto++;
+                            preco += 80;
+                            break;
 
                         case 5:
-                            JOptionPane.showMessageDialog(null, "Vamos aduber sua terra");
-                            qtdDesconto = qtdDesconto + 1;
-                            preco = preco + 5;
-                            break; 
+                            JOptionPane.showMessageDialog(null, "Vamos adubar sua terra");
+                            qtdDesconto++;
+                            preco += 5;
+                            break;
 
                         default:
                             JOptionPane.showMessageDialog(null, "Serviço não encontrado");
                             break;
-                     }
+                    }
                     break;
+
                 case 4:
-                    
-                    JOptionPane.showConfirmDialog(null, "Estatiticas:" + "\n" + 
-                                                 "Preço dos Serviços: " +preco+ "\n" + 
-                                                 "Desconto: " +qtdDesconto+ "\n" +
-                                                 "Preço Total: " + );
+                    float mediaArea = somaArea/qtdArea;
+                    float total = (qtdDesconto / 100.0f) * preco;
+                    String mensagemFinal = String.format("Estatísticas:\n" +
+                            "Preço dos Serviços: R$%.2f\n" +
+                            "Desconto: %d%%\n" +
+                            "Preço Total: R$%.2f\n" +
+                            "Media Das Areas Do Jardins: %.2f\n" +
+                            "Quantidades de Jardins Grandes: %d\n" +
+                            "Quantidade de Jardins Pequenos: %d\n", (float) preco, qtdDesconto, (preco - total), mediaArea, jarGrande, jarPequeno);
+                    JOptionPane.showMessageDialog(null, mensagemFinal);
+                    JOptionPane.showMessageDialog(null, "Ate Mais Jardineiro");
                     break;
 
                 default:

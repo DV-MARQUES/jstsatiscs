@@ -10,3 +10,6 @@ Endereço: rfjhg
 Nome: davi
 Endereço: flamengo
 ---------------
+Nome: Davi
+Endereço: rua 69
+---------------
