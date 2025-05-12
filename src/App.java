@@ -12,7 +12,8 @@ public class App {
                               "Escolha uma opção:\n" +
                               "1 - Cadastrar-se\n" +
                               "2 - Calcular Área\n" +
-                              "3 - Sair";
+                              "3 - Tipo de Serviço\n" +
+                              "4 - Sair";
 
             op = Integer.parseInt(JOptionPane.showInputDialog(mensagem));
 
@@ -41,7 +42,31 @@ public class App {
                         break;
                     }
                     
-                case 3:
+                case 3:  
+                    String mesangemServico = "Escolha um Tipo de Serviço: \n" +
+                                             "1 - Manutenção\n" + 
+                                             "2 - Poda\n" + 
+                                             "3 - Controle de Doenças e Pragas";
+                    int se = Integer.parseInt(JOptionPane.showInputDialog(mesangemServico));
+                    
+                     switch (se) {
+                        case 1:
+                            JOptionPane.showMessageDialog(null, "Vamos prestar a Manutenção");
+                            break;
+                     
+                        case 2:
+                            JOptionPane.showMessageDialog(null, "Vamos fazer a poda");
+                            break;
+                        
+                        case 3:
+                            JOptionPane.showMessageDialog(null, "Vamos fazer Controle de Doenças e Pragas");
+                            break;        
+                        default:
+                            JOptionPane.showMessageDialog(null, "Serviço não encontrado");
+                            break;
+                     }
+                    break;
+                case 4:
                     JOptionPane.showMessageDialog(null, "Até mais, Jardineiro!");
                     break;
 
@@ -50,6 +75,6 @@ public class App {
                     break;
             }
 
-        } while (op != 3); // repete até o usuário escolher sair
+        } while (op != 4); // repete até o usuário escolher sair
     }
 }
